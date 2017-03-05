@@ -26,32 +26,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.LinearLayoutCompat
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/open_lang_rules_row"
-                >
+            <!-- Phonotactics Row -->
 
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/open_lang_categories"
-                    >
+            <include layout="@layout/activity_open_lang_phonotactics" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="str"
-                        />
+            <!-- Options Row -->
 
-                </android.support.v7.widget.LinearLayoutCompat>
-
-            </android.support.v7.widget.LinearLayoutCompat>
+            <!--include layout="@layout/activity_open_lang_options" /-->
 
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v4.widget.NestedScrollView>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

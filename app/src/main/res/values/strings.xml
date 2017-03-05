@@ -13,7 +13,12 @@
     <string name="menu_help">Help</string>
 
     <!-- Open lang strings -->
-    <string name="categories_title"></string>
+    <string name="open_lang_title_categories">Categories:</string>
+    <string name="open_lang_title_rules">Rewrite rules:</string>
+    <string name="open_lang_title_syllables">Syllable types:</string>
+    <string name="open_lang_title_dropoff">\nDropoff:</string>
+    <string name="open_lang_title_syl_prob">Syllable cutoff\nprobability:</string>
+    <string name="open_lang_title_monosyl_prob">Monosyllables\nprobability:</string>
 
     <!-- Dialog strings -->
     <string name="dialog_empty_fields">Do you want to empty all fields?</string>
