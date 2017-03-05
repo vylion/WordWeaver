@@ -11,15 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar" />
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar" />
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
         <android.support.v7.widget.LinearLayoutCompat
             android:orientation="vertical"
@@ -34,10 +36,25 @@
 
             <!--include layout="@layout/activity_open_lang_options" /-->
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_lang_button_text"
+                android:id="@+id/open_lang_button"
+                />
+
+            <TextView
+                android:paddingTop="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/generated_text"
+                style="@style/primaryText"
+                android:textSize="20sp"
+                />
+
         </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v4.widget.NestedScrollView>
-
-
 
 </android.support.design.widget.CoordinatorLayout>

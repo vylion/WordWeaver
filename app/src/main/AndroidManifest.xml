@@ -19,7 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OpenLangActivity"></activity>
+        <activity android:name=".OpenLangActivity"
+            android:label="@string/title_activity_add_lang"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.Base"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>

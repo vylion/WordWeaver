@@ -47,4 +47,8 @@ public class Language {
     public String getAuthor() {
         return author;
     }
+
+    public void setWeaver(Weaver w) {
+        weaver = w;
+    }
 }

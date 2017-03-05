@@ -19,6 +19,7 @@
     <string name="open_lang_title_dropoff">\nDropoff:</string>
     <string name="open_lang_title_syl_prob">Syllable cutoff\nprobability:</string>
     <string name="open_lang_title_monosyl_prob">Monosyllables\nprobability:</string>
+    <string name="open_lang_button_text">Generate</string>
 
     <!-- Dialog strings -->
     <string name="dialog_empty_fields">Do you want to empty all fields?</string>

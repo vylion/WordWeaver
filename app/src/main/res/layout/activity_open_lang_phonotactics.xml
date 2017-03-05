@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/open_lang_categories"
+        android:orientation="vertical"
         >
 
         <TextView
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/open_lang_rules"
+        android:orientation="vertical"
         >
 
         <TextView
@@ -55,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:id="@+id/open_lang_syllables"
+        android:orientation="vertical"
         >
 
         <TextView
