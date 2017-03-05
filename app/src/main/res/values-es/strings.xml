@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Conlanger\'s Word Weaver</string>
+
+    <string name="dialog_empty_fields">¿Deseas vaciar todos los campos?</string>
+    <string name="dialog_no">Cancelar</string>
+    <string name="dialog_yes">Aceptar</string>
+    <string name="feature_not_implemented">Aún no se ha implementado esta opción</string>
+    <string name="menu_about">Acerca de</string>
+    <string name="menu_clear">Vaciar</string>
+    <string name="menu_delete">Eliminar</string>
+    <string name="menu_modify">Modificar</string>
+    <string name="menu_save">Guardar</string>
+    <string name="snackbar_delete_action">Deshacer</string>
+    <string name="snackbar_delete_reverted">ha sido restablecido.</string>
+    <string name="snackbar_delete_warning">ha sido eliminado.</string>
+    <string name="title_activity_add_lang">Generación de palabras</string>
+    <string name="about_button">Ok</string>
+    <string name="about_text">\"Conlanger\'s Word Weaver\" es un proyecto personal de Guillermo Serrahima,
+        nacido del objetivo de portar la funcionalidad de generación de palabras de zompist.com a Android.</string>
+    <string name="title_activity_help">Ayuda</string>
+    <string name="menu_help">Ayuda</string>
+    <string name="default_author">Desconocido</string>
+    <string name="default_lang_name">Nuevo idioma</string>
+</resources>

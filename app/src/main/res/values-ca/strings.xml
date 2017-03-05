@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Conlanger\'s Word Weaver</string>
+
+    <string name="dialog_empty_fields">Desitges buidar tots els camps?</string>
+    <string name="dialog_no">Cancel·la</string>
+    <string name="dialog_yes">Accepta</string>
+
+    <string name="feature_not_implemented">Aquesta opció encara no s\'ha implementat</string>
+
+    <string name="menu_about">Sobre aquesta app</string>
+    <string name="menu_clear">Buida</string>
+    <string name="menu_delete">Elimina</string>
+    <string name="menu_modify">Modifica</string>
+    <string name="menu_save">Guarda</string>
+
+    <string name="snackbar_delete_action">Desfer</string>
+    <string name="snackbar_delete_reverted">ha sigut restablert.</string>
+    <string name="snackbar_delete_warning">ha sigut eliminat.</string>
+    <string name="title_activity_add_lang">Generació de paraules</string>
+
+    <string name="about_button">Ok</string>
+    <string name="about_text">\"Conlanger\'s Word Weaver\" és un projecte personal de Guillermo Serrahima,
+        nascut de l\'objectiu de portar la funcionalitat de generació de paraules de zompist.com a Android.</string>
+    <string name="title_activity_help">Ajuda</string>
+    <string name="menu_help">Ajuda</string>
+    <string name="default_author">Desconegut</string>
+    <string name="default_lang_name">Nou idioma</string>
+</resources>
