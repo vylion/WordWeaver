@@ -2,15 +2,18 @@
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/open_lang_options"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
     >
 
+    <!-- Dropoff -->
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:id="@+id/open_lang_dropoff"
+        android:orientation="vertical"
         >
 
         <TextView
@@ -25,11 +28,13 @@
 
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <!-- Syllable dropoff -->
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:id="@+id/open_lang_syl_prob"
+        android:orientation="vertical"
         >
 
         <TextView
@@ -44,11 +49,13 @@
 
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <!-- Monosyllables probability -->
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:id="@+id/open_lang_monosyl_prob"
+        android:orientation="vertical"
         >
 
         <TextView

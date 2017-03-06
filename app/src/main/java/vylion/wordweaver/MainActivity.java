@@ -20,9 +20,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import vylion.wordweaver.alexandria.Scribe;
+import vylion.wordweaver.arachne.Language;
 import vylion.wordweaver.arachne.Weaver;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Scribe scribe;
     private Toolbar toolbar;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
             weaver = new Weaver("C=tknsmrh\nV=aioeu\nU=auoāēū\nL=āīōēū",
                     "hu>fu\nhū>fū\nsi>shi\nsī>shī\nsy>sh\nti>chi\ntī>chī\nty>ch\ntu>tsu\n" +
-                            "tū>tsū\nqk>kk\nqp>pp\nqt>tt\nq[^ptk]>",
+                            "tū>tsū\nqk>kk\nqp>pp\nqt>tt\nq>",
                     "CV\nCVn\nCL\nCLn\nCyU\nCyUn\nVn\nLn\nCVq\nCLq\nyU\nyUn\nwa\nL\nV");
             scribe.createLang("Sample: Pseudo-japanese", "Zompist", weaver);
 
@@ -113,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 showAbout(aboutText, ok, this);
                 break;
             case R.id.main_menu_add_lang:
-                Intent openLang = new Intent(this, OpenLangActivity.class);
-                startActivityForResult(openLang, 0);
+                Intent i = new Intent(this, OpenLangActivity.class);
+                startActivityForResult(i, 0);
                 break;
             case R.id.main_menu_help:
                 makeToast(getString(R.string.feature_not_implemented));
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
     private void resetView() {
         CoordinatorLayout layout = (CoordinatorLayout) findViewById(R.id.main_coordinator);
 
-        LangViewAdapter adapter = new LangViewAdapter(this, scribe, layout);
+        LangViewAdapter adapter = new LangViewAdapter(this, scribe, layout, this);
         langView.setAdapter(adapter);
 
         RecyclerView.LayoutManager lm;
@@ -189,5 +190,16 @@ public class MainActivity extends AppCompatActivity {
                 .setAction(action, l);
 
         snackbar.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int pos = langView.getChildLayoutPosition(v);
+        LangViewAdapter adapter = (LangViewAdapter) langView.getAdapter();
+        Language l = adapter.getItem(pos);
+
+        Intent i = new Intent(this, OpenLangActivity.class);
+        i.putExtra(OPEN_LANG_TAG, l);
+        startActivityForResult(i, 0);
     }
 }

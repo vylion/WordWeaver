@@ -2,6 +2,7 @@ package vylion.wordweaver.arachne;
 
 import android.text.TextUtils;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -33,7 +34,7 @@ public class Weaver {
 
     private Weaver() {
         categories = new HashMap<>();
-        rules = new ArrayList<RewriteRule>();
+        rules = new ArrayList<>();
         syllables = new ArrayList<>();
 
         dropoff = Dropoff.EQUAL;
@@ -56,13 +57,17 @@ public class Weaver {
 
         String[] categs = c.split("\n");
         for(int i = 0; i < categs.length; i++) {
-            String[] categ = categs[i].split("=");
-            if(categ[0].length() > 0 && categ[1].length() > 0) {
-                String[] letters = categ[1].split(" ");
-                if(letters.length > 1)
-                    categories.put(categ[0], letters);
-                else
-                categories.put(categ[0], categ[1].split("(?!^)"));
+            categs[i] = categs[i].trim();
+
+            if(categs[i].length() > 0) {
+                String[] categ = categs[i].split("=");
+                if (categ[0].length() > 0 && categ[1].length() > 0) {
+                    String[] letters = categ[1].split(" ");
+                    if (letters.length > 1)
+                        categories.put(categ[0], letters);
+                    else
+                        categories.put(categ[0], categ[1].split("(?!^)"));
+                }
             }
         }
 
@@ -74,6 +79,7 @@ public class Weaver {
         String[] syllables = s.split("\n");
         for(int i = 0; i < syllables.length; i++) {
             syllables[i] = syllables[i].trim();
+
             if(syllables[i].length() > 0) {
                 String[] syllable = syllables[i].split(" ");
                 if (syllable.length > 1)
@@ -220,6 +226,10 @@ public class Weaver {
     }
 
     public String newWord() {
+        return rewrite(makeWord());
+    }
+
+    private String makeWord() {
         String word = makeSyllable();
 
         double cutoff;
@@ -227,7 +237,7 @@ public class Weaver {
         switch (monosylProb) {
             default:
             case ALWAYS:
-                return rewrite(word);
+                return word;
             case MOSTLY:
                 cutoff = 0.6;
                 break;
@@ -249,7 +259,7 @@ public class Weaver {
             word += newWord();
         }
 
-        return rewrite(word);
+        return word;
     }
 
     public List<String> newWords(int i) {
@@ -280,7 +290,7 @@ public class Weaver {
     public String rulesToString() {
         String s = "";
 
-        for(int i = 0; i < rules.size(); i++) s+= rules.get(i).print() + "\n";
+        for(int i = 0; i < rules.size(); i++) s+= rules.get(i) + "\n";
 
         return s;
     }
@@ -315,6 +325,23 @@ public class Weaver {
 
     public double getMonosylProbCustom() {
         return monosylProbCustom;
+    }
+
+    public List<String> toParcelStrings() {
+        ArrayList<String> strings = new ArrayList<>();
+
+        strings.add(categoriesToString());
+        strings.add(rulesToString());
+        strings.add(syllablesToString());
+        strings.add(dropoffToString());
+        strings.add(sylProbToString());
+        strings.add(monosylProbToString());
+
+        return strings;
+    }
+
+    public static Weaver fromParcel(List<String> s, double dropoffCustom, double sylProbCustom, double monosylProbCustom) {
+        return new Weaver(s.get(0), s.get(1), s.get(2), s.get(3), dropoffCustom, s.get(4), sylProbCustom, s.get(5), monosylProbCustom);
     }
 
     public String toString() {

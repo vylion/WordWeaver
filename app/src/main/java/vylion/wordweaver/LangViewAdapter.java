@@ -27,7 +27,7 @@ import vylion.wordweaver.arachne.Language;
  * Created by vylion on 1/3/17.
  */
 
-public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookViewHolder> {
+public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.LangViewHolder> {
 
     public static final int COMPARE_BY_TITLE = 0;
     public static final int COMPARE_BY_CATEGORY = 1;
@@ -37,8 +37,9 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookVi
     private Context context;
     private Scribe scribe;
     private CoordinatorLayout coordinatorLayout;
+    private View.OnClickListener listener;
 
-    public LangViewAdapter(Context c, Scribe s, CoordinatorLayout layout) {
+    public LangViewAdapter(Context c, Scribe s, CoordinatorLayout layout, View.OnClickListener v) {
         scribe = s;
 
         inflater = LayoutInflater.from(c);
@@ -48,6 +49,7 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookVi
         //order();
         context = c;
         coordinatorLayout = layout;
+        listener = v;
     }
 
     //*****************************************
@@ -55,14 +57,15 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookVi
     //*****************************************
 
     @Override
-    public BookViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LangViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = inflater.inflate(R.layout.lang_view_row, parent, false);
-        BookViewHolder holder = new BookViewHolder(v);
+        LangViewHolder holder = new LangViewHolder(v);
+        v.setOnClickListener(listener);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(final BookViewHolder holder, int position) {
+    public void onBindViewHolder(final LangViewHolder holder, int position) {
         Language l = languages.get(position);
         holder.setName(l.getName());
         holder.setAuthor(l.getAuthor());
@@ -99,7 +102,7 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookVi
         }
         if(pos < languages.size()) {
             scribe.open();
-            scribe.deleteBook(languages.get(pos));
+            scribe.deleteLang(languages.get(pos));
             scribe.close();
             languages.remove(pos);
             notifyItemRemoved(pos);
@@ -108,7 +111,7 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookVi
 
     public void remove(int p) {
         scribe.open();
-        scribe.deleteBook(languages.get(p));
+        scribe.deleteLang(languages.get(p));
         scribe.close();
         languages.remove(p);
         notifyItemRemoved(p);
@@ -118,7 +121,7 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookVi
     //Auxiliary sorting tools
     //***********************
 
-    public void order() {
+    public void sort() {
         LangComparator comparator = new LangComparator();
         Collections.sort(languages, comparator);
         notifyDataSetChanged();
@@ -181,12 +184,12 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.BookVi
     //RecyclerViewAdapter's ViewHolder custom implementation
     //******************************************************
 
-    class BookViewHolder extends RecyclerView.ViewHolder implements PopupMenu.OnMenuItemClickListener, View.OnClickListener {
+    class LangViewHolder extends RecyclerView.ViewHolder implements PopupMenu.OnMenuItemClickListener, View.OnClickListener {
         private ImageView menuButton;
         private TextView name;
         private TextView author;
 
-        public BookViewHolder(View itemView) {
+        public LangViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.lang_view_row_name);
             author = (TextView) itemView.findViewById(R.id.lang_view_row_author);

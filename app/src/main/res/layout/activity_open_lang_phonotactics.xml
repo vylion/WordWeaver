@@ -4,8 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/open_lang_phonotactics"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
     >
 
+    <!-- Letter categories -->
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -29,29 +31,7 @@
 
     </android.support.v7.widget.LinearLayoutCompat>
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/open_lang_rules"
-        android:orientation="vertical"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/open_lang_title_rules"
-            />
-
-        <EditText
-            android:id="@+id/open_lang_edit_rules"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-    </android.support.v7.widget.LinearLayoutCompat>
-
+    <!-- Syllable types -->
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -68,6 +48,30 @@
 
         <EditText
             android:id="@+id/open_lang_edit_syllables"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <!-- Rewrite rules -->
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/open_lang_rules"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_lang_title_rules"
+            />
+
+        <EditText
+            android:id="@+id/open_lang_edit_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

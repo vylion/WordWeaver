@@ -32,8 +32,8 @@
     <string name="snackbar_delete_reverted">has been restored.</string>
 
     <!-- About strings -->
-    <string name="about_text">\"Conlanger\'s Word Weaver\" is a personal project of Guillermo Serrahima,
-        born from the goal of porting zompist.com\'s word generation functionality to Android.</string>
+    <string name="about_text">\"Word Weaver\" is a personal project of Guillermo Serrahima, born from
+        the goal of porting zompist.com\'s word generation functionality to Android.</string>
     <string name="about_button">OK</string>
 
     <!-- Default and other strings -->

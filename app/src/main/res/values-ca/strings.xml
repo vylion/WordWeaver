@@ -20,8 +20,8 @@
     <string name="title_activity_add_lang">Generació de paraules</string>
 
     <string name="about_button">Ok</string>
-    <string name="about_text">\"Conlanger\'s Word Weaver\" és un projecte personal de Guillermo Serrahima,
-        nascut de l\'objectiu de portar la funcionalitat de generació de paraules de zompist.com a Android.</string>
+    <string name="about_text">\"Word Weaver\" és un projecte personal de Guillermo Serrahima, nascut
+        de l\'objectiu de portar la funcionalitat de generació de paraules de zompist.com a Android.</string>
     <string name="title_activity_help">Ajuda</string>
     <string name="menu_help">Ajuda</string>
     <string name="default_author">Desconegut</string>
