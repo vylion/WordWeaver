@@ -126,11 +126,14 @@ public class Scribe {
         return createLang(l.getName(), l.getAuthor(), l.getWeaver());
     }
 
-    public void deleteLang(Language lang) {
-        long id = lang.getId();
+    public void deleteLang(long id) {
         System.out.println("Language deleted with id: " + id);
         database.delete(MySQLiteHelper.TABLE_LANGS, MySQLiteHelper.COLUMN_ID
                 + " = " + id, null);
+    }
+
+    public void deleteLang(Language lang) {
+        deleteLang(lang.getId());
     }
 
     public List<Language> getAllLangs() {

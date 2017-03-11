@@ -60,13 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scribe.open();
 
             Weaver weaver = new Weaver("C=ptkbdg\nR=rl\nV=ieaou", "ki>či", "CV\nV\nCRV");
-            scribe.createLang("Sample: Example", "Zompist", weaver);
+            scribe.createLang("Example", "Zompist", weaver);
 
             weaver = new Weaver("C=tknsmrh\nV=aioeu\nU=auoāēū\nL=āīōēū",
                     "hu>fu\nhū>fū\nsi>shi\nsī>shī\nsy>sh\nti>chi\ntī>chī\nty>ch\ntu>tsu\n" +
                             "tū>tsū\nqk>kk\nqp>pp\nqt>tt\nq>",
                     "CV\nCVn\nCL\nCLn\nCyU\nCyUn\nVn\nLn\nCVq\nCLq\nyU\nyUn\nwa\nL\nV");
-            scribe.createLang("Sample: Pseudo-japanese", "Zompist", weaver);
+            scribe.createLang("Pseudo-japanese", "Zompist", weaver);
 
             scribe.close();
 
@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.shared_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent i = new Intent(this, OpenLangActivity.class);
                 startActivityForResult(i, 0);
                 break;
-            case R.id.main_menu_help:
+            case R.id.shared_menu_help:
                 makeToast(getString(R.string.feature_not_implemented));
                 break;
         }
@@ -134,7 +135,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(resultCode == AppCompatActivity.RESULT_OK) {
             LangViewAdapter adapter = (LangViewAdapter) langView.getAdapter();
 
-            //adapter.notifyDataSetChanged();
+            Language lang = data.getParcelableExtra(OpenLangActivity.SAVE_LANG_TAG);
+            if(lang.getId() != -1) adapter.remove(lang.getId());
+
+            adapter.add(lang);
+            adapter.notifyDataSetChanged();
         }
     }
 

@@ -6,11 +6,12 @@
 
     <!-- App menu strings -->
     <string name="menu_about">About</string>
+    <string name="menu_help">Help</string>
     <string name="menu_modify">Modify</string>
     <string name="menu_delete">Delete</string>
     <string name="menu_save">Save</string>
     <string name="menu_clear">Clear</string>
-    <string name="menu_help">Help</string>
+    <string name="menu_rename">Rename</string>
 
     <!-- Open lang strings -->
     <string name="open_lang_title_categories">Categories:</string>
@@ -25,6 +26,9 @@
     <string name="dialog_empty_fields">Do you want to empty all fields?</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">Cancel</string>
+    <string name="dialog_save_lang">Name the language to be saved:</string>
+    <string name="dialog_save">Save</string>
+    <string name="dialog_cancel">Cancel</string>
 
     <!-- Snackbar strings -->
     <string name="snackbar_delete_warning">has been deleted.</string>

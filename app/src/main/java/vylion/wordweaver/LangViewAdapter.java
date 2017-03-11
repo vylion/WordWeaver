@@ -117,6 +117,15 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.LangVi
         notifyItemRemoved(p);
     }
 
+    public void remove(long id) {
+        scribe.open();
+        scribe.deleteLang(id);
+        languages = scribe.getAllLangs();
+        scribe.close();
+
+        notifyDataSetChanged();
+    }
+
     //***********************
     //Auxiliary sorting tools
     //***********************
@@ -229,7 +238,7 @@ public class LangViewAdapter extends RecyclerView.Adapter<LangViewAdapter.LangVi
 
         public void showPopupMenu(ImageView menu) {
             PopupMenu popup = new PopupMenu(context, menu, Gravity.NO_GRAVITY, R.attr.actionOverflowMenuStyle, 0);
-            popup.getMenuInflater().inflate(R.menu.lang_menu, popup.getMenu());
+            popup.getMenuInflater().inflate(R.menu.lang_row_menu, popup.getMenu());
             popup.setOnMenuItemClickListener(this);
             popup.show();
         }
