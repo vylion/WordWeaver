@@ -10,15 +10,42 @@ import java.util.*;
  */
 public class Weaver {
     public enum Dropoff {
-        EQUAL, FAST, MEDIUM, SLOW, MOLASSES, CUSTOM
+        EQUAL(0), FAST(1), MEDIUM(2), SLOW(3), MOLASSES(4), CUSTOM(5);
+
+        private final int value;
+        private Dropoff(int v) {
+            value = v;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 
     public enum SylProb {
-        EQUAL, HEAVY, MEDIUM, LIGHT, CUSTOM
+        EQUAL(0), HEAVY(1), MEDIUM(2), LIGHT(3), CUSTOM(4);
+
+        private final int value;
+        private SylProb(int v) {
+            value = v;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 
     public enum MonosylProb {
-        ALWAYS, MOSTLY, FREQUENT, LESS, RARE, CUSTOM
+        ALWAYS(0), MOSTLY(1), FREQUENT(2), LESS(3), RARE(4), CUSTOM(5);
+
+        private final int value;
+        private MonosylProb(int v) {
+            value = v;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 
     private Map<String, String[]> categories;
@@ -211,6 +238,18 @@ public class Weaver {
                 setMonosylProb(MonosylProb.CUSTOM, custom);
                 break;
         }
+    }
+
+    public Dropoff getDropoff() {
+        return dropoff;
+    }
+
+    public SylProb getSylProb() {
+        return sylProb;
+    }
+
+    public MonosylProb getMonosylProb() {
+        return monosylProb;
     }
 
     private String[] getRandSyllable() {

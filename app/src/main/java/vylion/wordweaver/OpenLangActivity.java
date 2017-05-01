@@ -70,35 +70,49 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
             categories.setText(weaver.categoriesToString());
             rules.setText(weaver.rulesToString());
             syllables.setText(weaver.syllablesToString());
+
+            dropoff = weaver.getDropoff().getValue();
+            dropoffCustom = weaver.getDropoffCustom();
+            sylprob = weaver.getSylProb().getValue();
+            sylprobCustom = weaver.getSylProbCustom();
+            monosyl = weaver.getMonosylProb().getValue();
+            monosylCustom = weaver.getMonosylProbCustom();
         }
         else {
             name = new EditText(this);
             name.setInputType(InputType.TYPE_CLASS_TEXT);
+
+            dropoff = 2;
+            sylprob = 2;
+            monosyl = 2;
+            dropoffCustom = 0.5;
+            sylprobCustom = 0.5;
+            monosylCustom = 0.5;
         }
 
-        Spinner spinner = (Spinner) findViewById(R.id.dropoff_spinner);
+        Spinner dropoffSpinner = (Spinner) findViewById(R.id.dropoff_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.dropoff_options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-        spinner.setSelection(2);
+        dropoffSpinner.setAdapter(adapter);
+        dropoffSpinner.setOnItemSelectedListener(this);
+        dropoffSpinner.setSelection(dropoff);
 
-        spinner = (Spinner) findViewById(R.id.sylprob_spinner);
+        Spinner sylprobSpinner = (Spinner) findViewById(R.id.sylprob_spinner);
         adapter = ArrayAdapter.createFromResource(this,
                 R.array.sylprob_options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-        spinner.setSelection(2);
+        sylprobSpinner.setAdapter(adapter);
+        sylprobSpinner.setOnItemSelectedListener(this);
+        sylprobSpinner.setSelection(sylprob);
 
-        spinner = (Spinner) findViewById(R.id.monosyl_spinner);
+        Spinner monosylSpinner = (Spinner) findViewById(R.id.monosyl_spinner);
         adapter = ArrayAdapter.createFromResource(this,
                 R.array.monosyl_options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-        spinner.setSelection(2);
+        monosylSpinner.setAdapter(adapter);
+        monosylSpinner.setOnItemSelectedListener(this);
+        monosylSpinner.setSelection(monosyl);
 
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
@@ -239,13 +253,13 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         switch (parent.getId()) {
             case R.id.dropoff_spinner:
-                setDropoff(pos, 0.2);
+                setDropoff(pos, 0.5);
                 break;
             case R.id.sylprob_spinner:
-                setSylProb(pos, 0.2);
+                setSylProb(pos, 0.5);
                 break;
             case R.id.monosyl_spinner:
-                setMonosylProb(pos, 0.2);
+                setMonosylProb(pos, 0.5);
                 break;
         }
     }
