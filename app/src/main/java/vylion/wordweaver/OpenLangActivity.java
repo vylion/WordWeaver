@@ -185,7 +185,7 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
             }
         }
 
-        if(lang == null) {
+        if(lang == null && weaver != null) {
             String question = getResources().getString(R.string.dialog_save_lang);
             String yes = getResources().getString(R.string.dialog_save);
             String no = getResources().getString(R.string.dialog_cancel);
