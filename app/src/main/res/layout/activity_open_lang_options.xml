@@ -22,7 +22,8 @@
             android:text="@string/open_lang_title_dropoff"
             />
 
-        <android.support.v7.widget.AppCompatRadioButton
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/dropoff_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -43,7 +44,8 @@
             android:text="@string/open_lang_title_syl_prob"
             />
 
-        <android.support.v7.widget.AppCompatRadioButton
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/sylprob_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -64,7 +66,8 @@
             android:text="@string/open_lang_title_monosyl_prob"
             />
 
-        <android.support.v7.widget.AppCompatRadioButton
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/monosyl_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

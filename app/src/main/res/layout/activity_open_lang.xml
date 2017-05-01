@@ -34,12 +34,10 @@
             >
 
             <!-- Phonotactics Row -->
-
             <include layout="@layout/activity_open_lang_phonotactics" />
 
             <!-- Options Row -->
-
-            <!-- include layout="@layout/activity_open_lang_options" /-->
+            <include layout="@layout/activity_open_lang_options" />
 
             <Button
                 android:layout_marginTop="@dimen/activity_vertical_margin"

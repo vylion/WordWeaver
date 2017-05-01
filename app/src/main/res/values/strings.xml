@@ -19,8 +19,46 @@
     <string name="open_lang_title_syllables">Syllable types:</string>
     <string name="open_lang_title_dropoff">\nDropoff:</string>
     <string name="open_lang_title_syl_prob">Syllable cutoff\nprobability:</string>
-    <string name="open_lang_title_monosyl_prob">Monosyllables\nprobability:</string>
+    <string name="open_lang_title_monosyl_prob">Monosyllable\nprobability:</string>
     <string name="open_lang_button_text">Generate</string>
+
+    <!-- Dropoff option strings -->
+    <string name="dropoff_equal">Equal</string>
+    <string name="dropoff_fast">Fast</string>
+    <string name="dropoff_medium">Medium</string>
+    <string name="dropoff_slow">Slow</string>
+    <string-array name="dropoff_options">
+        <item>@string/dropoff_equal</item>
+        <item>@string/dropoff_fast</item>
+        <item>@string/dropoff_medium</item>
+        <item>@string/dropoff_slow</item>
+    </string-array>
+
+    <!-- Syllable type probability option strings -->
+    <string name="sylprob_equal">Equal</string>
+    <string name="sylprob_fast">Heavy</string>
+    <string name="sylprob_medium">Medium</string>
+    <string name="sylprob_slow">Light</string>
+    <string-array name="sylprob_options">
+        <item>@string/sylprob_equal</item>
+        <item>@string/sylprob_fast</item>
+        <item>@string/sylprob_medium</item>
+        <item>@string/sylprob_slow</item>
+    </string-array>
+
+    <!-- Monosyllable probability option strings -->
+    <string name="monosyl_always">Always</string>
+    <string name="monosyl_mostly">Mostly</string>
+    <string name="monosyl_freq">Frequent</string>
+    <string name="monosyl_less">Less</string>
+    <string name="monosyl_rare">Rare</string>
+    <string-array name="monosyl_options">
+        <item>@string/monosyl_always</item>
+        <item>@string/monosyl_mostly</item>
+        <item>@string/monosyl_freq</item>
+        <item>@string/monosyl_less</item>
+        <item>@string/monosyl_rare</item>
+    </string-array>
 
     <!-- Dialog strings -->
     <string name="dialog_empty_fields">Do you want to empty all fields?</string>
@@ -43,8 +81,8 @@
     <!-- Default and other strings -->
     <string name="default_lang_name">New language</string>
     <string name="default_author">Unknown</string>
-    <string name="default_dropoff" translatable="false">EQUAL</string>
-    <string name="default_syl_prob" translatable="false">EQUAL</string>
+    <string name="default_dropoff" translatable="false">MEDIUM</string>
+    <string name="default_syl_prob" translatable="false">MEDIUM</string>
     <string name="default_monosyl_prob" translatable="false">FREQUENT</string>
     <string name="feature_not_implemented">This feature has not been implemented yet</string>
 </resources>

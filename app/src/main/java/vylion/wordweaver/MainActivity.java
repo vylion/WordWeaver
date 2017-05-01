@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CoordinatorLayout layout = (CoordinatorLayout) findViewById(R.id.main_coordinator);
 
         LangViewAdapter adapter = new LangViewAdapter(this, scribe, layout, this);
+        adapter.sort();
         langView.setAdapter(adapter);
 
         RecyclerView.LayoutManager lm;

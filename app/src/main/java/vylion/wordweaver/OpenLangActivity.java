@@ -12,15 +12,18 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import vylion.wordweaver.arachne.Language;
 import vylion.wordweaver.arachne.Weaver;
 
-public class OpenLangActivity extends AppCompatActivity implements View.OnClickListener {
+public class OpenLangActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     public static final String SAVE_LANG_TAG = "save_language";
 
@@ -34,6 +37,13 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
     private EditText rules;
     private EditText syllables;
     private EditText name;
+
+    private int dropoff;
+    private double dropoffCustom;
+    private int sylprob;
+    private double sylprobCustom;
+    private int monosyl;
+    private double monosylCustom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +75,30 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
             name = new EditText(this);
             name.setInputType(InputType.TYPE_CLASS_TEXT);
         }
+
+        Spinner spinner = (Spinner) findViewById(R.id.dropoff_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.dropoff_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(2);
+
+        spinner = (Spinner) findViewById(R.id.sylprob_spinner);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.sylprob_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(2);
+
+        spinner = (Spinner) findViewById(R.id.monosyl_spinner);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.monosyl_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(2);
 
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
@@ -103,16 +137,18 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
             String r = rules.getText().toString();
             String s = syllables.getText().toString();
 
-            if(c.length() > 0 && s.length() > 0)
-                weaver = new Weaver(c, r, s);
-            else weaver = null;
-        }
-        else weaver = null;
+            if(c.length() > 0 && s.length() > 0) {
+                if (weaver != null) weaver.setParameters(c, r, s);
+                else weaver = new Weaver(c, r, s);
 
-        if(weaver != null) {
-            String gen = weaver.newWordsAsString(20);
+                weaver.setDropoff(dropoff, dropoffCustom);
+                weaver.setSylProb(sylprob, sylprobCustom);
+                weaver.setMonosylProb(monosyl, monosylCustom);
 
-            generator.setText(gen);
+                String gen = weaver.newWordsAsString(20);
+
+                generator.setText(gen);
+            }
         }
     }
 
@@ -125,8 +161,14 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
             String r = rules.getText().toString();
             String s = syllables.getText().toString();
 
-            if (c.length() > 0 && s.length() > 0)
-                weaver = new Weaver(c, r, s);
+            if (c.length() > 0 && s.length() > 0){
+                if (weaver != null) weaver.setParameters(c, r, s);
+                else weaver = new Weaver(c, r, s);
+
+                weaver.setDropoff(dropoff, dropoffCustom);
+                weaver.setSylProb(sylprob, sylprobCustom);
+                weaver.setMonosylProb(monosyl, monosylCustom);
+            }
         }
 
         if(lang == null) {
@@ -191,5 +233,40 @@ public class OpenLangActivity extends AppCompatActivity implements View.OnClickL
 
     private void makeToast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        switch (parent.getId()) {
+            case R.id.dropoff_spinner:
+                setDropoff(pos, 0.2);
+                break;
+            case R.id.sylprob_spinner:
+                setSylProb(pos, 0.2);
+                break;
+            case R.id.monosyl_spinner:
+                setMonosylProb(pos, 0.2);
+                break;
+        }
+    }
+
+    private void setDropoff(int i, double d) {
+        dropoff = i;
+        dropoffCustom = d;
+    }
+
+    private void setSylProb(int i, double d) {
+        sylprob = i;
+        sylprobCustom = d;
+    }
+
+    private void setMonosylProb(int i, double d) {
+        monosyl = i;
+        monosylCustom = d;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

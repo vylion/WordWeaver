@@ -26,4 +26,26 @@
     <string name="menu_help">Ajuda</string>
     <string name="default_author">Desconegut</string>
     <string name="default_lang_name">Nou idioma</string>
+    <string name="menu_rename">Cambiar nom</string>
+    <string name="dropoff_slow">Lent</string>
+    <string name="dropoff_medium">Mitjà</string>
+    <string name="dropoff_fast">Ràpid</string>
+    <string name="dropoff_equal">Equiprobable</string>
+    <string name="dialog_save_lang">Dóna un nom per guardar el llenguatge:</string>
+    <string name="dialog_save">Guarda</string>
+    <string name="dialog_cancel">Cancel·la</string>
+    <string name="monosyl_always">Sempre</string>
+    <string name="monosyl_freq">Freqüent</string>
+    <string name="monosyl_less">Menys</string>
+    <string name="monosyl_mostly">Sovint</string>
+    <string name="monosyl_rare">Poc comuns</string>
+    <string name="open_lang_button_text">Genera</string>
+    <string name="open_lang_title_categories">Categories:</string>
+    <string name="open_lang_title_dropoff"></string>
+    <string name="open_lang_title_syllables">Tipus de síl·labes:</string>
+    <string name="sylprob_equal">Equiprobable</string>
+    <string name="sylprob_fast">Pesat</string>
+    <string name="sylprob_medium">Mig</string>
+    <string name="sylprob_slow">Lleuger</string>
+    <string name="open_lang_title_rules">Normes de reescritura:</string>
 </resources>

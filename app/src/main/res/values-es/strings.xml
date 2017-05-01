@@ -22,4 +22,25 @@
     <string name="menu_help">Ayuda</string>
     <string name="default_author">Desconocido</string>
     <string name="default_lang_name">Nuevo idioma</string>
+    <string name="menu_rename">Renombrar</string>
+    <string name="dropoff_slow">Lento</string>
+    <string name="dropoff_medium">Medio</string>
+    <string name="dropoff_fast">Rápido</string>
+    <string name="dropoff_equal">Equiprobable</string>
+    <string name="dialog_save_lang">Da un nombre al lenguaje a guardar:</string>
+    <string name="dialog_save">Guardar</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="monosyl_always">Siempre</string>
+    <string name="monosyl_freq">Frecuente</string>
+    <string name="monosyl_less">Menos</string>
+    <string name="monosyl_mostly">A menudo</string>
+    <string name="monosyl_rare">Poco comunes</string>
+    <string name="open_lang_button_text">Generar</string>
+    <string name="open_lang_title_categories">Categorías:</string>
+    <string name="open_lang_title_syllables">Tipos de sílabas:</string>
+    <string name="sylprob_equal">Equiprobable</string>
+    <string name="sylprob_fast">Pesado</string>
+    <string name="sylprob_medium">Medio</string>
+    <string name="sylprob_slow">Ligero</string>
+    <string name="open_lang_title_rules">Normas de reescritura:</string>
 </resources>

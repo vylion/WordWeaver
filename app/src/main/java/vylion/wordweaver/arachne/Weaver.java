@@ -37,8 +37,8 @@ public class Weaver {
         rules = new ArrayList<>();
         syllables = new ArrayList<>();
 
-        dropoff = Dropoff.EQUAL;
-        sylProb = SylProb.EQUAL;
+        dropoff = Dropoff.MEDIUM;
+        sylProb = SylProb.MEDIUM;
         monosylProb = MonosylProb.FREQUENT;
 
         rand = new Random();
@@ -51,9 +51,17 @@ public class Weaver {
     public Weaver(String c, String r, String s) {
         this();
 
+        setParameters(c, r, s);
+    }
+
+    public void setParameters(String c, String r, String s) {
         c = c.trim();
         r = r.trim();
         s = s.trim();
+
+        categories = new HashMap<>();
+        rules = new ArrayList<>();
+        syllables = new ArrayList<>();
 
         String[] categs = c.split("\n");
         for(int i = 0; i < categs.length; i++) {
@@ -114,6 +122,30 @@ public class Weaver {
         }
     }
 
+    public void setDropoff(int i, Double custom) {
+        switch (i) {
+            default:
+            case 0:
+                setDropoff(Dropoff.EQUAL, null);
+                break;
+            case 1:
+                setDropoff(Dropoff.FAST, null);
+                break;
+            case 2:
+                setDropoff(Dropoff.MEDIUM, null);
+                break;
+            case 3:
+                setDropoff(Dropoff.SLOW, null);
+                break;
+            case 4:
+                setDropoff(Dropoff.MOLASSES, null);
+                break;
+            case 5:
+                setDropoff(Dropoff.CUSTOM, custom);
+                break;
+        }
+    }
+
     public void setSylProb(SylProb p, Double custom) {
         sylProb = p;
 
@@ -125,6 +157,27 @@ public class Weaver {
         }
     }
 
+    public void setSylProb(int i, Double custom) {
+        switch (i) {
+            default:
+            case 0:
+                setSylProb(SylProb.EQUAL, null);
+                break;
+            case 1:
+                setSylProb(SylProb.HEAVY, null);
+                break;
+            case 2:
+                setSylProb(SylProb.MEDIUM, null);
+                break;
+            case 3:
+                setSylProb(SylProb.LIGHT, null);
+                break;
+            case 4:
+                setSylProb(SylProb.CUSTOM, custom);
+                break;
+        }
+    }
+
     public void setMonosylProb(MonosylProb p, Double custom) {
         monosylProb = p;
 
@@ -133,6 +186,30 @@ public class Weaver {
                 monosylProbCustom = 1;
             else
                 monosylProbCustom = custom;
+        }
+    }
+
+    public void setMonosylProb(int i, Double custom) {
+        switch (i) {
+            default:
+            case 0:
+                setMonosylProb(MonosylProb.ALWAYS, null);
+                break;
+            case 1:
+                setMonosylProb(MonosylProb.MOSTLY, null);
+                break;
+            case 2:
+                setMonosylProb(MonosylProb.FREQUENT, null);
+                break;
+            case 3:
+                setMonosylProb(MonosylProb.LESS, null);
+                break;
+            case 4:
+                setMonosylProb(MonosylProb.RARE, null);
+                break;
+            case 5:
+                setMonosylProb(MonosylProb.CUSTOM, custom);
+                break;
         }
     }
 
@@ -216,12 +293,14 @@ public class Weaver {
     public String rewrite(String word) {
         for(int i = 0; i < rules.size(); i++) {
             RewriteRule rule = rules.get(i);
-            String[] chunks = word.split(rule.getBefore());
-            if(chunks.length > 1) word = TextUtils.join(rule.getAfter(), chunks);
-            else if (chunks.length == 0) word = rule.getAfter();
-            else word = chunks[0];
-        }
 
+            if(word.contains(rule.getBefore())) {
+                String[] chunks = word.split(rule.getBefore());
+                if(chunks.length == 1) word = chunks[0] + rule.getAfter();
+                else if(chunks.length > 1) word = TextUtils.join(rule.getAfter(), chunks);
+                else word = rule.getAfter();
+            }
+        }
         return word;
     }
 
@@ -256,7 +335,7 @@ public class Weaver {
 
         double jump = rand.nextDouble();
         if(jump > cutoff) {
-            word += newWord();
+            word += makeWord();
         }
 
         return word;
